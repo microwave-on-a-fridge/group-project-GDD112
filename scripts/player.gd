@@ -1,12 +1,17 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
+var speed = 300
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
+	Globals.player_position = position
+	if Input.is_action_pressed("sprint"):
+		speed = 600
+	else:
+		speed = 300
 	
 	if is_on_floor():
 		Globals.grounded = true
@@ -23,13 +28,15 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
 
 func _on_area_2d_body_entered(_body):
+	Globals.dead = true
 	print("dead")
+	print(Globals.player_position)
 	queue_free()
 	pass # Replace with function body.
