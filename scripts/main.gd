@@ -1,3 +1,5 @@
+# I HAVENT DONE LIKE ANY COMMENTING AT ALL YET BUT I WILL IN THE FUTURE THIS IS JUST THE PROTOTYPE THAT I AM RUSHING TO GET OUT
+
 extends Node2D
 
 # Called when the node enters the scene tree for the first time.

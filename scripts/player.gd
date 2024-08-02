@@ -9,6 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	Globals.player_position = position
+	Globals.player_velocity = velocity
 	if Input.is_action_pressed("sprint"):
 		speed = 600
 	else:
@@ -48,4 +49,3 @@ func _on_area_2d_body_entered(_body):
 	print("dead")
 	print(Globals.player_position)
 	queue_free()
-	pass # Replace with function body.
