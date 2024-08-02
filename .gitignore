@@ -16,3 +16,4 @@ mono_crash.*.json
 
 # Added by me (mainly for git plugin)
 addons/
+exports/

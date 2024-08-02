@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://c50kutchqp1ml"]
+[gd_scene load_steps=11 format=3 uid="uid://c50kutchqp1ml"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1xttw"]
 [ext_resource type="PackedScene" uid="uid://ctike478f5csh" path="res://scenes/player.tscn" id="1_8lg6b"]
 [ext_resource type="Texture2D" uid="uid://bwg4ntwl5gnk0" path="res://icon.svg" id="3_j86ww"]
 [ext_resource type="Texture2D" uid="uid://d3cx3387d1lrv" path="res://sprites/danger sprite.png" id="3_ww0p2"]
-[ext_resource type="Script" path="res://scripts/UI.gd" id="5_pxdi0"]
+[ext_resource type="Script" path="res://scenes/UI.gd" id="5_78s6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dw6u"]
 size = Vector2(123, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipc85"]
+size = Vector2(10688, 2693)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ssfb"]
 size = Vector2(1738.25, 91)
@@ -24,6 +27,7 @@ script = ExtResource("1_1xttw")
 [node name="Player" parent="." instance=ExtResource("1_8lg6b")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
 
 [node name="ProtoObstacle" type="Area2D" parent="."]
 collision_layer = 2
@@ -36,6 +40,19 @@ shape = SubResource("RectangleShape2D_0dw6u")
 [node name="Sprite2D" type="Sprite2D" parent="ProtoObstacle"]
 position = Vector2(910, 120)
 texture = ExtResource("3_ww0p2")
+
+[node name="ProtoObstacle2" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 13
+
+[node name="Sprite2D" type="Sprite2D" parent="ProtoObstacle2"]
+position = Vector2(162, 1989)
+scale = Vector2(83.8828, 1)
+texture = ExtResource("3_ww0p2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtoObstacle2"]
+position = Vector2(134, 3294)
+shape = SubResource("RectangleShape2D_ipc85")
 
 [node name="ProtoFloor" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -63,12 +80,21 @@ texture = ExtResource("3_j86ww")
 position = Vector2(463.5, 117.5)
 shape = SubResource("RectangleShape2D_t2j7d")
 
-[node name="DeathUI" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-script = ExtResource("5_pxdi0")
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("5_78s6b")
 
-[node name="Died" type="Label" parent="DeathUI"]
-z_index = 1
+[node name="DeathUI" type="CanvasLayer" parent="UI"]
+visible = false
+follow_viewport_enabled = true
+
+[node name="DeathBG" type="ColorRect" parent="UI/DeathUI"]
+offset_left = -15.0
+offset_top = -7.0
+offset_right = 1151.0
+offset_bottom = 658.0
+color = Color(1, 0, 0, 1)
+
+[node name="Died" type="Label" parent="UI/DeathUI"]
 offset_left = 342.0
 offset_top = 189.0
 offset_right = 789.0
@@ -76,19 +102,20 @@ offset_bottom = 326.0
 text = "You died!"
 label_settings = SubResource("LabelSettings_i8cqj")
 
-[node name="DeathBG" type="ColorRect" parent="DeathUI"]
-offset_left = -15.0
-offset_top = -7.0
-offset_right = 1151.0
-offset_bottom = 658.0
-color = Color(0.937255, 0.690196, 1, 1)
-
-[node name="Button" type="Button" parent="DeathUI"]
+[node name="Button" type="Button" parent="UI/DeathUI"]
 offset_left = 358.0
 offset_top = 312.0
 offset_right = 737.0
 offset_bottom = 400.0
 text = "Restart?"
 
+[node name="DebugUI" type="CanvasLayer" parent="UI"]
+
+[node name="DebugInfo" type="Label" parent="UI/DebugUI"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TEXT TO HELP ME PLACE THE TEXT CORRECTLY THIS SHOULDNT SHOW UP IN GAME BUT IT MAKES SENSE TO ME DONT QUESTION IT"
+
 [connection signal="body_entered" from="ProtoObstacle" to="Player" method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="DeathUI/Button" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="ProtoObstacle2" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="UI/DeathUI/Button" to="." method="_on_button_pressed"]
