@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b32wbgxjpqjnu"
-path="res://.godot/imported/light.png-191c2812e8968dabd6c4fd26c78b4e95.ctex"
+uid="uid://d3cx3387d1lrv"
+path="res://.godot/imported/danger sprite.png-7ab5da9a57fa4fdf83c2f5c49faeef0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/light.png"
-dest_files=["res://.godot/imported/light.png-191c2812e8968dabd6c4fd26c78b4e95.ctex"]
+source_file="res://sprites/placeholder/danger sprite.png"
+dest_files=["res://.godot/imported/danger sprite.png-7ab5da9a57fa4fdf83c2f5c49faeef0f.ctex"]
 
 [params]
 

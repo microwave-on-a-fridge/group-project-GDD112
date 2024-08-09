@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3cx3387d1lrv"
-path="res://.godot/imported/danger sprite.png-89d46268a9f2bc9f5da05676c29d9b46.ctex"
+uid="uid://djkgs0c53ld4w"
+path="res://.godot/imported/ladder1.png-d781eef6fbd3de8cdf1a011ad98729f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/danger sprite.png"
-dest_files=["res://.godot/imported/danger sprite.png-89d46268a9f2bc9f5da05676c29d9b46.ctex"]
+source_file="res://sprites/level/ladder1.png"
+dest_files=["res://.godot/imported/ladder1.png-d781eef6fbd3de8cdf1a011ad98729f2.ctex"]
 
 [params]
 

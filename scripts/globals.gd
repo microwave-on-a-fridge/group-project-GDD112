@@ -5,6 +5,6 @@ var player_velocity: Vector2
 var enemies_killed: int = 0
 var dead: bool = false
 var score: int = 0
-var grounded: bool = true
+var canJump: bool = true
 var canDoubleJump
 var debugInfoShown = false

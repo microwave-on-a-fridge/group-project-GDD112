@@ -21,6 +21,12 @@ config/icon="res://icon.svg"
 
 Globals="*res://scripts/globals.gd"
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/resizable=false
+
 [input]
 
 up={

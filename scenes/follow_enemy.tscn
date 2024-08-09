@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmkgk8kl5l3x"]
+
+[ext_resource type="Script" path="res://scripts/follow_enemy.gd" id="1_qpnek"]
+[ext_resource type="Texture2D" uid="uid://bwg4ntwl5gnk0" path="res://icon.svg" id="2_nk7ch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4f1v"]
+size = Vector2(132, 128)
+
+[node name="FollowEnemy" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_qpnek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nk7ch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x4f1v")
