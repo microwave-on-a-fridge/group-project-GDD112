@@ -1,11 +1,17 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$IntroSequence.play("intro_sequence")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	if Input.is_anything_pressed():
+		$IntroSequence.advance(12.5)
+
+func _on_play_pressed():
+	get_tree().change_scene_to_file("res://scenes/debug.tscn")
+
+func _on_settings_pressed():
+	get_tree().change_scene_to_file("res://scenes/settings.tscn")
+
+func _on_exit_pressed():
+	get_tree().quit()
