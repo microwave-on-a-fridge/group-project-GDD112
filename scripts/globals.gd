@@ -8,3 +8,4 @@ var score: int = 0
 var canJump: bool = true
 var canDoubleJump
 var debugInfoShown = false
+var introPlayed = false

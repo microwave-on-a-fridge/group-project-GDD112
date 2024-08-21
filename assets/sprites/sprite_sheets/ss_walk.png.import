@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsuuxmwou7ur4"
-path="res://.godot/imported/circle.png-a680a9452b21d59ed9d6eed5eaa366f1.ctex"
+uid="uid://dfbaasnkm3fig"
+path="res://.godot/imported/ss_walk.png-ce21cb8ea2a123e833d0f4a664ac1235.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/misc/circle.png"
-dest_files=["res://.godot/imported/circle.png-a680a9452b21d59ed9d6eed5eaa366f1.ctex"]
+source_file="res://assets/sprites/sprite_sheets/ss_walk.png"
+dest_files=["res://.godot/imported/ss_walk.png-ce21cb8ea2a123e833d0f4a664ac1235.ctex"]
 
 [params]
 

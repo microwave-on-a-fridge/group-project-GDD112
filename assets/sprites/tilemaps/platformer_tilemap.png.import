@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3cx3387d1lrv"
-path="res://.godot/imported/danger sprite.png-7ab5da9a57fa4fdf83c2f5c49faeef0f.ctex"
+uid="uid://cncpty6472v6l"
+path="res://.godot/imported/platformer_tilemap.png-cdb12d8f96b9fdf8622d9d01a51f029b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/placeholder/danger sprite.png"
-dest_files=["res://.godot/imported/danger sprite.png-7ab5da9a57fa4fdf83c2f5c49faeef0f.ctex"]
+source_file="res://assets/sprites/tilemaps/platformer_tilemap.png"
+dest_files=["res://.godot/imported/platformer_tilemap.png-cdb12d8f96b9fdf8622d9d01a51f029b.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcpdjsacwfvdf"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_mk7c5"]
-[ext_resource type="FontFile" uid="uid://cg01dxw6w5iv0" path="res://fonts/Jersey25-Regular.ttf" id="2_182a3"]
+[ext_resource type="FontFile" uid="uid://cg01dxw6w5iv0" path="res://assets/fonts/Jersey25-Regular.ttf" id="2_182a3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ie5y"]
 font = ExtResource("2_182a3")
@@ -149,6 +149,19 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 text = "EXIT"
+
+[node name="TemporaryWarning1" type="Label" parent="Menu/Main"]
+offset_right = 588.0
+offset_bottom = 23.0
+text = "GAME IS IN AN UNFINISHED STATE, EXPECT BUGS AND STRANGE BEHAVIOUR"
+
+[node name="TemporaryWarning2" type="Label" parent="Menu/Main"]
+offset_left = 919.0
+offset_top = 504.0
+offset_right = 1210.0
+offset_bottom = 579.0
+text = "SETTINGS INCOMPLETE, SOME THINGS MAY NOT WORK/MAY CRASH THE GAME, DO NOT TAKE AS FINAL"
+autowrap_mode = 2
 
 [node name="IntroSequence" type="AnimationPlayer" parent="."]
 libraries = {

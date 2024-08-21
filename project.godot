@@ -25,7 +25,6 @@ Globals="*res://scripts/globals.gd"
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
-window/size/resizable=false
 window/stretch/mode="canvas_items"
 
 [input]
@@ -87,7 +86,9 @@ debugToggle={
 2d_physics/layer_2="Level"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Powerups"
+2d_physics/layer_5="TileWalls"
+2d_physics/layer_6="TileObjects"
 
 [physics]
 
-2d/default_gravity=1000.0
+2d/default_gravity=2000.0
