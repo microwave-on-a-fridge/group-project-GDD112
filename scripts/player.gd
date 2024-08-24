@@ -48,6 +48,10 @@ func _physics_process(_delta):
 
 	if is_on_floor() and Input.is_action_just_pressed("down"):
 		position.y += 1
+		
+	var vertical_direction = Input.get_axis("up", "down")
+	if Globals.onLadder:
+		velocity.y = current_speed * vertical_direction
 
 func jump():
 	if is_on_floor() or can_coyote_jump:

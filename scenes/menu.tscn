@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcpdjsacwfvdf"]
+[gd_scene load_steps=8 format=3 uid="uid://dcpdjsacwfvdf"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_mk7c5"]
 [ext_resource type="FontFile" uid="uid://cg01dxw6w5iv0" path="res://assets/fonts/Jersey25-Regular.ttf" id="2_182a3"]
+[ext_resource type="AudioStream" uid="uid://ef8ytbgb7vmr" path="res://assets/audio/bgm/nhelv.ogg" id="3_sjpwg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ie5y"]
 font = ExtResource("2_182a3")
@@ -167,6 +168,9 @@ autowrap_mode = 2
 libraries = {
 "": SubResource("AnimationLibrary_f0pj1")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sjpwg")
 
 [connection signal="pressed" from="Menu/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Menu/Main/Settings" to="." method="_on_settings_pressed"]
