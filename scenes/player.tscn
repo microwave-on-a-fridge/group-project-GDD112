@@ -220,7 +220,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45pxn"]
-size = Vector2(332, 512)
+size = Vector2(287, 526)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 62
@@ -231,7 +231,7 @@ sprite_frames = SubResource("SpriteFrames_wxi15")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-19, -30)
+position = Vector2(20.5, -37)
 shape = SubResource("RectangleShape2D_45pxn")
 
 [node name="CoyoteTimer" type="Timer" parent="."]

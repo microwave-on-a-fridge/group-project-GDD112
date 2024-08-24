@@ -56,9 +56,11 @@ func _physics_process(_delta):
 	
 	update_animations(horizontal_direction)
 
+	# can drop down through platforms
 	if is_on_floor() and Input.is_action_just_pressed("down"):
 		position.y += 1
 		
+	# if on a ladder, be able to climb
 	var vertical_direction = Input.get_axis("up", "down")
 	if Globals.onLadder:
 		velocity.y = current_speed * vertical_direction
