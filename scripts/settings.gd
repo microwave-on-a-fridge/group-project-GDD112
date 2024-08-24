@@ -2,7 +2,7 @@ extends Control
 
 var config = ConfigFile.new()
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$Settings/VolumeSlider.min_value = -80
 	$Settings/VolumeSlider.max_value = 0

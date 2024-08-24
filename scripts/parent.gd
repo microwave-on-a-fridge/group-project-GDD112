@@ -1,14 +1,10 @@
-# I HAVENT DONE LIKE ANY COMMENTING AT ALL YET BUT I WILL IN THE FUTURE THIS IS JUST THE PROTOTYPE THAT I AM RUSHING TO GET OUT
-
 extends Node2D
-
+# all pretty self explanatory here
 class_name Parent
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$UI/DeathUI.set_visible(false)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Globals.dead:
 		$UI/DeathUI.set_visible(true)
@@ -19,7 +15,6 @@ func _process(_delta):
 		Globals.debugInfoShown = false
 
 
-# when pressing button, reload the level
 func _on_button_pressed():
 	print("restarting!")
 	Globals.dead = false

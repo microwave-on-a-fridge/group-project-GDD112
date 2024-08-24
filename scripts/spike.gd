@@ -1,7 +1,7 @@
 extends Area2D
 
 
-# this is such an easy thing to do im kinda dumb for not figuring it out for so long
+# when you touch the spikes you die. no shit.
 func _on_body_entered(body):
 	body.queue_free()
 	Globals.dead = true
