@@ -1,108 +1,103 @@
 extends CharacterBody2D
 
-const JUMP_VELOCITY = -1500.0
-var speed = 1000
-var canDoubleJump = true
-var canDie = false
+@export var speed = 1000
+@export var sprint_speed = 1500
+@export var jump_force = 3000
+@export var gravity = 100
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-func _ready():
-	$SpawnImmunity.start()
-	$Anim.hide()
+var can_coyote_jump = false
+var jump_buffered = false
+var can_double_jump = false
 
-func _physics_process(delta):
-	Globals.player_position = position
-	Globals.player_velocity = velocity
+
+func _physics_process(_delta):
+	if !is_on_floor() and (can_coyote_jump == false):
+		velocity.y += gravity
+		if velocity.y > 2000:
+			velocity.y = 2000
+
+	if Input.is_action_just_pressed("jump"):
+		$JumpHeightTimer.start()
+		jump()
 	
-	if Input.is_action_just_pressed("right"):
-		if Input.is_action_pressed("sprint"):
-			$Anim.show()
-			speed = 1500
-			$Anim.scale.x = 0.5
-			$Anim.play("run")
-			$SsIdle.hide()
-		else:
-			$Anim.show()
-			speed = 1000
-			$Anim.scale.x = 0.5
-			$Anim.play("walk")
-			$SsIdle.hide()
-	elif Input.is_action_just_pressed("left"):
-		if Input.is_action_pressed("sprint"):
-			$Anim.show()
-			speed = 1500
-			$Anim.scale.x = -0.5
-			$Anim.play("run")
-			$SsIdle.hide()
-		else:
-			$Anim.show()
-			speed = 1000
-			$Anim.scale.x = -0.5
-			$Anim.play("walk")
-			$SsIdle.hide()
-	
-	if Input.is_action_just_released("right") :
-		$Anim.hide()
-		$SsIdle.show()
-		$SsIdle.scale.x = 0.5
-	elif Input.is_action_just_released("left") :
-		$Anim.hide()
-		$SsIdle.show()
-		$SsIdle.scale.x = -0.5
+	# Check for sprint input
+	var current_speed = speed
+	if Input.is_action_pressed("sprint"):
+		current_speed = sprint_speed
 
-	if is_on_floor():
-		Globals.canJump = true
-		canDoubleJump = true
+	var horizontal_direction = Input.get_axis("left", "right")
+	velocity.x = current_speed * horizontal_direction
+	
+	if horizontal_direction != 0:
+		switch_direction(horizontal_direction)
 		
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		Globals.canJump = false
+	var was_on_floor = is_on_floor()
+	move_and_slide()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and Globals.canJump:
-		$Anim.show()
-		$Anim.play("jump")
-		$SsIdle.hide()
-		velocity.y = JUMP_VELOCITY
-	
-	if Input.is_action_just_pressed("jump") and not Globals.canJump and canDoubleJump:
-		$Anim.show()
-		$Anim.play("jump")
-		$SsIdle.hide()
-		velocity.y = JUMP_VELOCITY
-		canDoubleJump = false
-
-	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+	if was_on_floor and !is_on_floor() and velocity.y >= 0:
+		can_coyote_jump = true
+		$CoyoteTimer.start()
 		
-	if Input.is_action_pressed("down"):
+	if !was_on_floor and is_on_floor():
+		if jump_buffered:
+			jump_buffered = false
+			jump()
+		can_double_jump = false
+	
+	update_animations(horizontal_direction)
+
+	if is_on_floor() and Input.is_action_just_pressed("down"):
 		position.y += 1
 
-	move_and_slide()
-	
-	Globals.canDoubleJump = canDoubleJump
-	
-	if Globals.dead:
-		print("dead")
-		print(Globals.player_position)
-		queue_free()
-
-func _on_spawn_immunity_timeout():
-	canDie = true
-
-func _on_spike_body_entered(_body):
-	if canDie:
-		Globals.dead = true
-		print("dead")
-		print(Globals.player_position)
-		queue_free()
+func jump():
+	if is_on_floor() or can_coyote_jump:
+		velocity.y = -jump_force
+		
+		if can_coyote_jump:
+			can_coyote_jump = false
+		can_double_jump = true
+		
+	elif can_double_jump:
+		velocity.y = -jump_force
+		can_double_jump = false
+		
+	else:
+		if !jump_buffered:
+			jump_buffered = true
+			$JumpBufferTimer.start()
 
 
-func _on_end_body_entered(_body):
-	queue_free()
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+func _on_coyote_timer_timeout():
+	can_coyote_jump = false
+
+
+func _on_jump_height_timer_timeout():
+	if !Input.is_action_pressed("jump"):
+		if velocity.y < -100:
+			velocity.y = -100
+
+
+func _on_jump_buffer_timer_timeout():
+	jump_buffered = false
+
+
+func update_animations(horizontal_direction):
+	if is_on_floor():
+		if horizontal_direction == 0:
+			$AnimatedSprite2D.play("idle")
+		else:
+			# Check if the sprint action is pressed to play the sprint animation
+			if Input.is_action_pressed("sprint"):
+				$AnimatedSprite2D.play("run")
+			else:
+				$AnimatedSprite2D.play("walk")
+	else:
+		if velocity.y < 0:
+			$AnimatedSprite2D.play("jump")
+		elif velocity.y > 0:
+			$AnimatedSprite2D.play("fall")
+
+
+func switch_direction(horizontal_direction):
+	$AnimatedSprite2D.flip_h = (horizontal_direction == -1)
+	$AnimatedSprite2D.position.x = horizontal_direction * 4

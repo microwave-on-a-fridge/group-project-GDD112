@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://c50kutchqp1ml"]
 
-[ext_resource type="PackedScene" uid="uid://ctike478f5csh" path="res://scenes/player.tscn" id="1_8lg6b"]
 [ext_resource type="Script" path="res://scripts/parent.gd" id="1_xaghr"]
 [ext_resource type="Texture2D" uid="uid://dxe7eerp8thrj" path="res://assets/sprites/static_sprites/background.png" id="2_fjngb"]
 [ext_resource type="TileSet" uid="uid://3hvux7wdvtfo" path="res://resources/parent.tres" id="4_dgnex"]
 [ext_resource type="Script" path="res://scripts/UI.gd" id="5_78s6b"]
+[ext_resource type="PackedScene" uid="uid://dcpw3y68o5aru" path="res://scenes/player.tscn" id="6_0f0l6"]
 [ext_resource type="PackedScene" uid="uid://bo56sq1sdn1nd" path="res://scenes/spike.tscn" id="6_441mg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8cqj"]
@@ -13,7 +13,7 @@ font_size = 100
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxa5f"]
 size = Vector2(1538, 937)
 
-[node name="Main" type="Node2D"]
+[node name="Parent" type="Node2D"]
 script = ExtResource("1_xaghr")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -239,13 +239,7 @@ position = Vector2(2308, 1584)
 [node name="Spike20" parent="Spikes" instance=ExtResource("6_441mg")]
 position = Vector2(2054, 1584)
 
-[node name="Player" parent="." instance=ExtResource("1_8lg6b")]
-position = Vector2(-485, 70)
-
-[node name="Camera2D2" type="Camera2D" parent="Player"]
-zoom = Vector2(0.3, 0.3)
-position_smoothing_enabled = true
-metadata/_edit_lock_ = true
+[node name="Player" parent="." instance=ExtResource("6_0f0l6")]
 
 [node name="End" type="Area2D" parent="."]
 position = Vector2(33389, -3049)

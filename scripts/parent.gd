@@ -19,7 +19,8 @@ func _process(_delta):
 		Globals.debugInfoShown = false
 
 
+# when pressing button, reload the level
 func _on_button_pressed():
 	print("restarting!")
 	Globals.dead = false
-	get_tree().change_scene_to_file("res://scenes/level2.tscn")
+	get_tree().reload_current_scene()
