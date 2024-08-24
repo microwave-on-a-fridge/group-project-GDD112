@@ -21,8 +21,10 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="OptionButton" type="OptionButton" parent="Settings"]
-offset_right = 551.0
-offset_bottom = 82.0
+offset_left = 110.0
+offset_top = 134.0
+offset_right = 661.0
+offset_bottom = 216.0
 alignment = 1
 item_count = 2
 selected = 0
@@ -46,6 +48,20 @@ offset_bottom = 382.0
 max_value = 1.0
 step = 0.01
 
+[node name="CheckBox" type="CheckBox" parent="Settings"]
+offset_left = 73.0
+offset_top = 421.0
+offset_right = 175.0
+offset_bottom = 452.0
+text = "Show FPS"
+
+[node name="Label" type="Label" parent="Settings"]
+offset_left = 353.0
+offset_top = 277.0
+offset_right = 412.0
+offset_bottom = 300.0
+text = "Volume"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5e0bc")
 autoplay = true
@@ -53,3 +69,4 @@ autoplay = true
 [connection signal="item_selected" from="Settings/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Settings/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="Settings/CheckBox" to="." method="_on_check_box_toggled"]

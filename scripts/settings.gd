@@ -29,3 +29,10 @@ func _on_volume_slider_value_changed(value):
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	#config.save("user://settings.cfg")
+
+
+# toggle show fps
+func _on_check_box_toggled(toggled_on):
+	Globals.show_fps = toggled_on
+	
+
