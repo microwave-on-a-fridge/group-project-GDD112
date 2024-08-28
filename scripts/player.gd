@@ -30,7 +30,10 @@ func _physics_process(_delta):
 	var current_speed = speed
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
-
+	
+	
+	if Globals.onLadder and not is_on_floor():
+		current_speed *= 2
 	# move left and right, easy enough to understand
 	var horizontal_direction = Input.get_axis("left", "right")
 	velocity.x = current_speed * horizontal_direction
@@ -63,7 +66,7 @@ func _physics_process(_delta):
 	# if on a ladder, be able to climb
 	var vertical_direction = Input.get_axis("up", "down")
 	if Globals.onLadder:
-		velocity.y = current_speed * vertical_direction
+		velocity.y = current_speed / 2 * vertical_direction
 
 
 #jump function
