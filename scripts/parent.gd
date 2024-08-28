@@ -1,6 +1,8 @@
 extends Node2D
-# all pretty self explanatory here
+
 class_name Parent
+
+# all pretty self explanatory here
 
 func _ready():
 	$UI/DeathUI.set_visible(false)
@@ -16,6 +18,5 @@ func _process(_delta):
 
 
 func _on_button_pressed():
-	print("restarting!")
 	Globals.dead = false
 	get_tree().reload_current_scene()
