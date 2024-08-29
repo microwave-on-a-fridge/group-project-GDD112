@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd3kvqgwohgsy"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_kgcti"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kgcti")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Level1" type="Button" parent="CanvasLayer"]
+offset_left = 552.0
+offset_top = 384.0
+offset_right = 702.0
+offset_bottom = 534.0
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="CanvasLayer"]
+offset_left = 752.0
+offset_top = 384.0
+offset_right = 902.0
+offset_bottom = 534.0
+text = "Level 2"
+
+[node name="Level3" type="Button" parent="CanvasLayer"]
+offset_left = 952.0
+offset_top = 384.0
+offset_right = 1102.0
+offset_bottom = 534.0
+text = "Level 3"
+
+[node name="Back" type="Button" parent="CanvasLayer"]
+offset_left = 1168.0
+offset_top = 708.0
+offset_right = 1504.0
+offset_bottom = 829.0
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

@@ -9,6 +9,12 @@ func _process(delta):
 	
 	if player_collision:
 		Globals.dead = true
+		
+	if position.x > Globals.player_position.x:
+		$AnimatedSprite2D.flip_h = true
+	
+	if position.x < Globals.player_position.x:
+		$AnimatedSprite2D.flip_h = false
 
 
 # dont move until the player encounters the enemy

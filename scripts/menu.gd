@@ -31,14 +31,15 @@ func _ready():
 		$IntroSequence.advance(12.5) # length of the animation (skip to end)
 
 
+# any button is pressed, skip intro
 func _process(_delta):
 	if Input.is_anything_pressed():
 		$IntroSequence.advance(12.5)
 
 
-# change these later
+# these are all self explanatory
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/level2.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 
 func _on_settings_pressed():
@@ -47,3 +48,13 @@ func _on_settings_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_info_pressed():
+	$Menu/Info.set_visible(true)
+	$Menu/Main.set_visible(false)
+
+
+func _on_back_pressed():
+	$Menu/Info.set_visible(false)
+	$Menu/Main.set_visible(true)

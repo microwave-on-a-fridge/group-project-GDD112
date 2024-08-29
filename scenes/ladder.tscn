@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ladder.gd" id="1_7oag1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lybv2"]
-size = Vector2(314, 932)
+size = Vector2(186, 932)
 
 [node name="Ladder" type="Area2D"]
 collision_layer = 2

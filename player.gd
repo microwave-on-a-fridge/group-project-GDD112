@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # ints for movement velocity stuff
 @export var speed = 1000
-@export var sprint_speed = 1500
+@export var sprint_speed = 1600
 @export var jump_force = 3000
 @export var gravity = 100
 @export var fall_velocity = 4000
@@ -15,7 +15,6 @@ var can_double_jump = false
 
 # movement code stuff
 func _physics_process(_delta):
-	Globals.player_position = position
 	# code for falling, with max fall speed
 	if not is_on_floor() and (can_coyote_jump == false):
 		velocity.y += gravity
@@ -32,17 +31,12 @@ func _physics_process(_delta):
 	var tween = $Camera2D.create_tween()
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
-		# zoom camera in when sprint
 		tween.tween_property($Camera2D, "zoom", Vector2(0.27, 0.27), 0.25)
-
-	# zoom camera back out
-	if not Input.is_action_just_pressed("sprint"):
+	if Input.is_action_just_released("sprint"):
 		tween.tween_property($Camera2D, "zoom", Vector2(0.3, 0.3), 0.15)
 	
-	# enable ladder launch mechanic thingy so you can fling off ladders
-	if Globals.on_ladder and not is_on_floor():
+	if Globals.onLadder and not is_on_floor():
 		$LadderBoostStartTimer.start()
-	
 	# move left and right, easy enough to understand
 	var horizontal_direction = Input.get_axis("left", "right")
 	velocity.x = current_speed * horizontal_direction
@@ -74,12 +68,9 @@ func _physics_process(_delta):
 		
 	# if on a ladder, be able to climb
 	var vertical_direction = Input.get_axis("up", "down")
-	if Globals.on_ladder:
-		@warning_ignore("integer_division") # IT IS MERELY A WARNING AND THE CODE WORKS FINE
+	if Globals.onLadder:
 		velocity.y = current_speed / 2 * vertical_direction
 
-	if Globals.dead:
-		queue_free()
 
 #jump function
 func jump():
@@ -144,6 +135,7 @@ func switch_direction(horizontal_direction):
 func _on_ladder_boost_start_timer_timeout():
 	speed = 5000
 	$LadderBoostEndTimer.start()
+
 
 
 func _on_ladder_boost_end_timer_timeout():

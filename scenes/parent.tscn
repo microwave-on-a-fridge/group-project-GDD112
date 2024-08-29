@@ -245,7 +245,7 @@ position = Vector2(-473, 439)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(16663, 7724)
+position = Vector2(16184, 12098)
 shape = SubResource("RectangleShape2D_8u126")
 
 [connection signal="pressed" from="UI/DeathUI/Button" to="." method="_on_button_pressed"]

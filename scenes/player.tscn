@@ -220,18 +220,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45pxn"]
-size = Vector2(278, 526)
+size = Vector2(287, 447)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 62
 script = ExtResource("1_6mkxa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_wxi15")
-animation = &"jump"
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, -37)
+position = Vector2(20.5, -31.5)
 shape = SubResource("RectangleShape2D_45pxn")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
@@ -246,6 +247,14 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="LadderBoostStartTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="LadderBoostEndTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
@@ -253,3 +262,5 @@ position_smoothing_enabled = true
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
+[connection signal="timeout" from="LadderBoostStartTimer" to="." method="_on_ladder_boost_start_timer_timeout"]
+[connection signal="timeout" from="LadderBoostEndTimer" to="." method="_on_ladder_boost_end_timer_timeout"]

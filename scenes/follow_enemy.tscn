@@ -1,24 +1,80 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmkgk8kl5l3x"]
+[gd_scene load_steps=12 format=3 uid="uid://bmkgk8kl5l3x"]
 
 [ext_resource type="Script" path="res://scripts/follow_enemy.gd" id="1_qpnek"]
-[ext_resource type="Texture2D" uid="uid://bwg4ntwl5gnk0" path="res://icon.svg" id="2_nk7ch"]
+[ext_resource type="Texture2D" uid="uid://u57fx0jsfmh1" path="res://assets/sprites/sprite_sheets/foj_move.png" id="2_4w3w1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4f1v"]
-size = Vector2(132, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2xyu"]
+atlas = ExtResource("2_4w3w1")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tknww"]
+atlas = ExtResource("2_4w3w1")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwx10"]
+atlas = ExtResource("2_4w3w1")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfpm0"]
+atlas = ExtResource("2_4w3w1")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1ov7"]
+atlas = ExtResource("2_4w3w1")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tugy3"]
+atlas = ExtResource("2_4w3w1")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_demim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2xyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tknww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwx10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfpm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1ov7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tugy3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63ac7"]
+radius = 179.0
+height = 493.985
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cw8mx"]
-size = Vector2(1562, 806)
+size = Vector2(6272, 4728)
 
 [node name="FollowEnemy" type="CharacterBody2D"]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_qpnek")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_nk7ch")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_demim")
+autoplay = "default"
+frame = 2
+frame_progress = 0.951989
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_x4f1v")
+position = Vector2(-18, -77)
+rotation = 0.76969
+shape = SubResource("CapsuleShape2D_63ac7")
 
 [node name="DetectionZone" type="Area2D" parent="."]
 collision_layer = 4
