@@ -20,3 +20,7 @@ func _process(_delta):
 func _on_button_pressed():
 	Globals.dead = false
 	get_tree().reload_current_scene()
+
+
+func _on_killzone_body_entered(_body):
+	Globals.dead = true

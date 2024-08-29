@@ -29,9 +29,12 @@ func _physics_process(_delta):
 	
 	# check for sprint input
 	var current_speed = speed
+	var tween = $Camera2D.create_tween()
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
-	
+		tween.tween_property($Camera2D, "zoom", Vector2(0.27, 0.27), 0.25)
+	if not Input.is_action_just_pressed("sprint"):
+		tween.tween_property($Camera2D, "zoom", Vector2(0.3, 0.3), 0.15)
 	# enable ladder launch mechanic thingy so you can fling off ladders
 	if Globals.on_ladder and not is_on_floor():
 		current_speed *= 2

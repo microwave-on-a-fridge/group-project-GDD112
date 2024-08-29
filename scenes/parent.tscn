@@ -10,8 +10,8 @@
 [sub_resource type="LabelSettings" id="LabelSettings_i8cqj"]
 font_size = 100
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxa5f"]
-size = Vector2(1538, 937)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u126"]
+size = Vector2(99408, 2136)
 
 [node name="Parent" type="Node2D"]
 script = ExtResource("1_xaghr")
@@ -240,12 +240,13 @@ position = Vector2(2054, 1584)
 
 [node name="Player" parent="." instance=ExtResource("6_0f0l6")]
 
-[node name="End" type="Area2D" parent="."]
-position = Vector2(33389, -3049)
+[node name="Killzone" type="Area2D" parent="."]
+position = Vector2(-473, 439)
+collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
-position = Vector2(759, 5.5)
-shape = SubResource("RectangleShape2D_rxa5f")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(16663, 7724)
+shape = SubResource("RectangleShape2D_8u126")
 
 [connection signal="pressed" from="UI/DeathUI/Button" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]

@@ -220,7 +220,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45pxn"]
-size = Vector2(335, 526)
+size = Vector2(278, 526)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 62
@@ -231,7 +231,7 @@ sprite_frames = SubResource("SpriteFrames_wxi15")
 animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(44.5, -37)
+position = Vector2(16, -37)
 shape = SubResource("RectangleShape2D_45pxn")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
