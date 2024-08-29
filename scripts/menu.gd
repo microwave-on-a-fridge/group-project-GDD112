@@ -23,9 +23,9 @@ func _ready():
 		print("failed to load config, using default options")
 	
 	# if the intro has played already, dont play it again
-	if not Globals.introPlayed:
+	if not Globals.intro_played:
 		$IntroSequence.play("intro_sequence")
-		Globals.introPlayed = true
+		Globals.intro_played = true
 	else:
 		$IntroSequence.play("intro_sequence")
 		$IntroSequence.advance(12.5) # length of the animation (skip to end)

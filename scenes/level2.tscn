@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr01fvjri178o"]
+[gd_scene load_steps=4 format=3 uid="uid://cr01fvjri178o"]
 
 [ext_resource type="PackedScene" uid="uid://c50kutchqp1ml" path="res://scenes/parent.tscn" id="1_2eh6b"]
 [ext_resource type="PackedScene" uid="uid://jsju5l7574lx" path="res://scenes/ladder.tscn" id="2_xw22f"]
+[ext_resource type="PackedScene" uid="uid://bmkgk8kl5l3x" path="res://scenes/follow_enemy.tscn" id="3_jron4"]
 
 [node name="Main" instance=ExtResource("1_2eh6b")]
 
@@ -10,3 +11,7 @@ layer_2/tile_data = PackedInt32Array(-131070, 0, 0, -65534, 0, 1, -131069, 65536
 
 [node name="Ladder" parent="." index="6" instance=ExtResource("2_xw22f")]
 position = Vector2(7828, -170)
+
+[node name="FollowEnemy" parent="." index="7" instance=ExtResource("3_jron4")]
+position = Vector2(2849, -2119)
+scale = Vector2(3, 3)

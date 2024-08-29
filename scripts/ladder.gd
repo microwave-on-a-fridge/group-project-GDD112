@@ -3,8 +3,8 @@ extends Area2D
 # self explanatory
 
 func _on_body_entered(_body):
-	Globals.onLadder = true
+	Globals.on_ladder = true
 
 
 func _on_body_exited(_body):
-	Globals.onLadder = false
+	Globals.on_ladder = false

@@ -10,14 +10,13 @@ func _ready():
 	var err = config.load(config_path)
 	if err == OK:
 		$Settings/VolumeSlider.value = config.get_value("Audio", "Volume", 0)
-		$Settings/OptionButton.selected = config.get_value("Game", "WindowMode", 0)
-		$Settings/CheckBox.button_pressed = config.get_value("Game", "ShowFPS", 0)
-		print("config loaded!")
+		$Settings/WindowDropdown.selected = config.get_value("Game", "WindowMode", 0)
+		$Settings/ToggleFPS.button_pressed = config.get_value("Game", "ShowFPS", 0)
 	else:
 		print("failed to load config, using default options")
 
 
-func _on_option_button_item_selected(index):
+func _on_window_dropdown_item_selected(index):
 	var option = index
 	if option == 0:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -41,8 +40,11 @@ func _on_back_button_pressed():
 
 
 # toggle show fps
-func _on_check_box_toggled(toggled_on):
+func _on_toggle_fps_toggled(toggled_on):
 	Globals.show_fps = toggled_on
 	config.set_value("Game", "ShowFPS", toggled_on)
 	config.save(config_path)
+
+
+
 

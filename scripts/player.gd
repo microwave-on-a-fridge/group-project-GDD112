@@ -15,6 +15,7 @@ var can_double_jump = false
 
 # movement code stuff
 func _physics_process(_delta):
+	Globals.player_position = position
 	# code for falling, with max fall speed
 	if not is_on_floor() and (can_coyote_jump == false):
 		velocity.y += gravity
@@ -31,9 +32,10 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
 	
-	
-	if Globals.onLadder and not is_on_floor():
+	# enable ladder launch mechanic thingy so you can fling off ladders
+	if Globals.on_ladder and not is_on_floor():
 		current_speed *= 2
+	
 	# move left and right, easy enough to understand
 	var horizontal_direction = Input.get_axis("left", "right")
 	velocity.x = current_speed * horizontal_direction
@@ -65,9 +67,12 @@ func _physics_process(_delta):
 		
 	# if on a ladder, be able to climb
 	var vertical_direction = Input.get_axis("up", "down")
-	if Globals.onLadder:
+	if Globals.on_ladder:
+		@warning_ignore("integer_division") # IT IS MERELY A WARNING AND THE CODE WORKS FINE
 		velocity.y = current_speed / 2 * vertical_direction
 
+	if Globals.dead:
+		queue_free()
 
 #jump function
 func jump():

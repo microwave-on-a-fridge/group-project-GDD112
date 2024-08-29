@@ -20,7 +20,7 @@ offset_bottom = 900.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="OptionButton" type="OptionButton" parent="Settings"]
+[node name="WindowDropdown" type="OptionButton" parent="Settings"]
 offset_left = 110.0
 offset_top = 134.0
 offset_right = 661.0
@@ -32,6 +32,14 @@ popup/item_0/text = "Windowed"
 popup/item_0/id = 0
 popup/item_1/text = "Fullscreen"
 popup/item_1/id = 1
+
+[node name="WindowText" type="Label" parent="Settings/WindowDropdown"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = -30.0
+offset_right = 344.0
+offset_bottom = -7.0
+text = "Choose window mode"
 
 [node name="BackButton" type="Button" parent="Settings"]
 offset_left = 1047.0
@@ -48,25 +56,26 @@ offset_bottom = 382.0
 max_value = 1.0
 step = 0.01
 
-[node name="CheckBox" type="CheckBox" parent="Settings"]
+[node name="VolumeText" type="Label" parent="Settings/VolumeSlider"]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 16.0
+offset_right = 364.0
+offset_bottom = 39.0
+text = "Volume"
+
+[node name="ToggleFPS" type="CheckBox" parent="Settings"]
 offset_left = 73.0
 offset_top = 421.0
 offset_right = 175.0
 offset_bottom = 452.0
 text = "Show FPS"
 
-[node name="Label" type="Label" parent="Settings"]
-offset_left = 353.0
-offset_top = 277.0
-offset_right = 412.0
-offset_bottom = 300.0
-text = "Volume"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5e0bc")
 autoplay = true
 
-[connection signal="item_selected" from="Settings/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="Settings/WindowDropdown" to="." method="_on_window_dropdown_item_selected"]
 [connection signal="pressed" from="Settings/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="toggled" from="Settings/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="Settings/ToggleFPS" to="." method="_on_toggle_fps_toggled"]
