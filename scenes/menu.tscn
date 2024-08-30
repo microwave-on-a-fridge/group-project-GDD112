@@ -177,6 +177,7 @@ text = "ULTRA BANANA"
 label_settings = SubResource("LabelSettings_ugg23")
 
 [node name="Info" type="CanvasLayer" parent="Menu"]
+visible = false
 
 [node name="Controls" type="Label" parent="Menu/Info"]
 offset_right = 40.0

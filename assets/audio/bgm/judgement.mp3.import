@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/judgement.mp3-fd76dc6ad10cbfbdfc5a9914a537497
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
