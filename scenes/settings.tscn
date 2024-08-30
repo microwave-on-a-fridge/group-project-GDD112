@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb8oy32lotc66"]
+[gd_scene load_steps=2 format=3 uid="uid://cb8oy32lotc66"]
 
 [ext_resource type="Script" path="res://scripts/settings.gd" id="1_il3w4"]
-[ext_resource type="AudioStream" uid="uid://ef8ytbgb7vmr" path="res://assets/audio/bgm/nhelv.ogg" id="3_5e0bc"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -70,10 +69,6 @@ offset_top = 421.0
 offset_right = 175.0
 offset_bottom = 452.0
 text = "Show FPS"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_5e0bc")
-autoplay = true
 
 [connection signal="item_selected" from="Settings/WindowDropdown" to="." method="_on_window_dropdown_item_selected"]
 [connection signal="pressed" from="Settings/BackButton" to="." method="_on_back_button_pressed"]

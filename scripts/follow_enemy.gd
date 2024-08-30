@@ -19,14 +19,15 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = false
 		
 	if Globals.dead:
-		$AudioStreamPlayer.stop()
+		$JudgementBGM.stop()
 
 
 # dont move until the player encounters the enemy
 func _on_detection_zone_body_entered(_body):
 	speed = 1000
 	if not music_started:
-		$AudioStreamPlayer.play()
+		$JudgementBGM.play()
+		$ScreamSE.play()
 		music_started = true
 
 

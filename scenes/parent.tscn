@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c50kutchqp1ml"]
+[gd_scene load_steps=15 format=3 uid="uid://c50kutchqp1ml"]
 
 [ext_resource type="Script" path="res://scripts/parent.gd" id="1_xaghr"]
 [ext_resource type="Texture2D" uid="uid://dxe7eerp8thrj" path="res://assets/sprites/static_sprites/background.png" id="2_fjngb"]
@@ -6,15 +6,24 @@
 [ext_resource type="Texture2D" uid="uid://d2rjvut3r74ej" path="res://assets/sprites/images/spike_death.jpg" id="4_2cgwl"]
 [ext_resource type="TileSet" uid="uid://3hvux7wdvtfo" path="res://resources/parent.tres" id="4_dgnex"]
 [ext_resource type="Script" path="res://scripts/UI.gd" id="5_78s6b"]
+[ext_resource type="Texture2D" uid="uid://swit4s4swcak" path="res://assets/sprites/images/win.jpg" id="5_e5r4c"]
 [ext_resource type="PackedScene" uid="uid://dcpw3y68o5aru" path="res://scenes/player.tscn" id="6_0f0l6"]
 [ext_resource type="PackedScene" uid="uid://bo56sq1sdn1nd" path="res://scenes/spike.tscn" id="6_441mg"]
+[ext_resource type="Texture2D" uid="uid://cx1epqcfo1v3r" path="res://assets/sprites/static_sprites/banana.png" id="10_s0tuu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8cqj"]
 font_size = 100
 font_color = Color(1, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_x880y"]
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u126"]
 size = Vector2(99408, 2136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63bx3"]
+size = Vector2(414, 1114)
 
 [node name="Parent" type="Node2D"]
 script = ExtResource("1_xaghr")
@@ -35,13 +44,11 @@ offset_right = 1600.0
 offset_bottom = 900.0
 
 [node name="EnemyDeath" type="TextureRect" parent="UI/DeathUI"]
-visible = false
 offset_right = 1593.0
 offset_bottom = 824.0
 texture = ExtResource("3_3wm6p")
 
 [node name="SpikeDeath" type="TextureRect" parent="UI/DeathUI"]
-visible = false
 offset_left = 422.0
 offset_top = 11.0
 offset_right = 1436.0
@@ -63,6 +70,36 @@ offset_top = 433.0
 offset_right = 987.0
 offset_bottom = 521.0
 text = "Restart?"
+
+[node name="WinUI" type="CanvasLayer" parent="UI"]
+
+[node name="WinBG" type="ColorRect" parent="UI/WinUI"]
+offset_right = 1600.0
+offset_bottom = 900.0
+metadata/_edit_lock_ = true
+
+[node name="WinImg" type="TextureRect" parent="UI/WinUI"]
+offset_left = 527.0
+offset_top = -6.0
+offset_right = 1593.0
+offset_bottom = 1458.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e5r4c")
+
+[node name="Return" type="Button" parent="UI/WinUI"]
+offset_left = 1020.0
+offset_top = 660.0
+offset_right = 1526.0
+offset_bottom = 826.0
+text = "Return to menu"
+
+[node name="Win" type="Label" parent="UI/WinUI"]
+offset_left = 64.0
+offset_top = 683.0
+offset_right = 956.0
+offset_bottom = 820.0
+text = "You beat the level!"
+label_settings = SubResource("LabelSettings_x880y")
 
 [node name="DebugUI" type="CanvasLayer" parent="UI"]
 script = ExtResource("5_78s6b")
@@ -265,5 +302,18 @@ collision_layer = 2
 position = Vector2(16184, 12098)
 shape = SubResource("RectangleShape2D_8u126")
 
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(38775, -3052)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_63bx3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Goal"]
+scale = Vector2(3.20955, 3.20955)
+texture = ExtResource("10_s0tuu")
+
 [connection signal="pressed" from="UI/DeathUI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/WinUI/Return" to="." method="_on_return_pressed"]
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

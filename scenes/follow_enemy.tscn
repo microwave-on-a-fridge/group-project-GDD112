@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmkgk8kl5l3x"]
+[gd_scene load_steps=14 format=3 uid="uid://bmkgk8kl5l3x"]
 
 [ext_resource type="Script" path="res://scripts/follow_enemy.gd" id="1_qpnek"]
 [ext_resource type="Texture2D" uid="uid://u57fx0jsfmh1" path="res://assets/sprites/sprite_sheets/foj_move.png" id="2_4w3w1"]
 [ext_resource type="AudioStream" uid="uid://cgyd21cqeiyve" path="res://assets/audio/bgm/judgement.mp3" id="3_8mchf"]
+[ext_resource type="AudioStream" uid="uid://b05v06ssya36x" path="res://assets/audio/se/scream.wav" id="4_kb1wg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2xyu"]
 atlas = ExtResource("2_4w3w1")
@@ -83,9 +84,13 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
 shape = SubResource("RectangleShape2D_cw8mx")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="JudgementBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8mchf")
 volume_db = -14.123
+
+[node name="ScreamSE" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kb1wg")
+volume_db = -16.834
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
