@@ -177,7 +177,6 @@ text = "ULTRA BANANA"
 label_settings = SubResource("LabelSettings_ugg23")
 
 [node name="Info" type="CanvasLayer" parent="Menu"]
-visible = false
 
 [node name="Controls" type="Label" parent="Menu/Info"]
 offset_right = 40.0
@@ -194,8 +193,9 @@ offset_left = 456.0
 offset_top = 299.0
 offset_right = 1197.0
 offset_bottom = 771.0
-text = "In this game, the aim is to make it to the end of every level. Avoid spikes and flying monsters on your journey through each level. You have access to a double jump, and you can climb ladders. Ladders will give you a horizontal speed boost when you exit them, use this to your advantage!"
+text = "In this game, the aim is to make it to the end of every level. Avoid spikes and flying monsters on your journey through each level. You have access to a double jump, and you can climb ladders. Ladders will give you a horizontal speed boost when you exit them, use this to your advantage! If you hold shift, you can stop the boost from occurring."
 label_settings = SubResource("LabelSettings_erflk")
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Back" type="Button" parent="Menu/Info"]
