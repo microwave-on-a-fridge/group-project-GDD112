@@ -10,6 +10,7 @@ func _process(delta):
 	
 	if player_collision:
 		Globals.dead = true
+		Globals.death_cause = "enemy"
 		
 	if position.x > Globals.player_position.x:
 		$AnimatedSprite2D.flip_h = true

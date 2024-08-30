@@ -5,3 +5,4 @@ extends Area2D
 func _on_body_entered(body):
 	body.queue_free()
 	Globals.dead = true
+	Globals.death_cause = "spike"

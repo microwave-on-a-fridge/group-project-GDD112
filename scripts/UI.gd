@@ -5,3 +5,4 @@ func _process(_delta):
 		$DebugInfo.text = str(Engine.get_frames_per_second()) + " fps"
 	else:
 		$DebugInfo.text = ""
+
