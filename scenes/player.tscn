@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://dcpw3y68o5aru"]
+[gd_scene load_steps=35 format=3 uid="uid://dcpw3y68o5aru"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6mkxa"]
 [ext_resource type="Texture2D" uid="uid://isvgea8njruf" path="res://assets/sprites/static_sprites/ss_idle.png" id="2_kpyae"]
 [ext_resource type="Texture2D" uid="uid://cggcv6qhjukvq" path="res://assets/sprites/sprite_sheets/ss_jump.png" id="2_m2n2f"]
 [ext_resource type="Texture2D" uid="uid://byiip6eemin5n" path="res://assets/sprites/sprite_sheets/ss_run.png" id="3_yoih1"]
 [ext_resource type="Texture2D" uid="uid://dfbaasnkm3fig" path="res://assets/sprites/sprite_sheets/ss_walk.png" id="4_3iql1"]
+[ext_resource type="AudioStream" uid="uid://rq86ilxog1qu" path="res://assets/audio/se/run.ogg" id="6_dojne"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1oyh"]
 atlas = ExtResource("2_m2n2f")
@@ -258,6 +259,9 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
+
+[node name="RunSE" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dojne")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]

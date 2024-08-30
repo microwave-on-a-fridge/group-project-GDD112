@@ -12,6 +12,7 @@ var can_coyote_jump = false
 var jump_buffered = false
 var can_double_jump = false
 
+var is_run_playing = false
 
 # movement code stuff
 func _physics_process(_delta):
@@ -80,6 +81,14 @@ func _physics_process(_delta):
 
 	if Globals.dead:
 		queue_free()
+	
+	if velocity.x != 0 and is_on_floor() and not is_run_playing:
+		$RunSE.play()
+		is_run_playing = true
+		
+	if velocity.x == 0 or not is_on_floor():
+		$RunSE.stop()
+		is_run_playing = false
 
 #jump function
 func jump():
