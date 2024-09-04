@@ -329,7 +329,7 @@ position = Vector2(-24822, -583)
 scale = Vector2(1, 0.8)
 
 [node name="FollowEnemy" parent="." index="7" instance=ExtResource("4_lylri")]
-position = Vector2(-20619, -9326)
+position = Vector2(-19918, -9245)
 
 [node name="Goal" parent="." index="8"]
 position = Vector2(68834, -2094)

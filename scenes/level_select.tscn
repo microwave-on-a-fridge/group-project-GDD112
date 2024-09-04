@@ -25,21 +25,24 @@ offset_left = 552.0
 offset_top = 384.0
 offset_right = 702.0
 offset_bottom = 534.0
-text = "Level 1"
+text = "Level 1
+(Easy)"
 
 [node name="Level2" type="Button" parent="CanvasLayer"]
 offset_left = 752.0
 offset_top = 384.0
 offset_right = 902.0
 offset_bottom = 534.0
-text = "Level 2"
+text = "Level 2
+(Medium)"
 
 [node name="Level3" type="Button" parent="CanvasLayer"]
 offset_left = 952.0
 offset_top = 384.0
 offset_right = 1102.0
 offset_bottom = 534.0
-text = "Level 3"
+text = "Level 3
+(Hard)"
 
 [node name="Back" type="Button" parent="CanvasLayer"]
 offset_left = 1168.0

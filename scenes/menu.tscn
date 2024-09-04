@@ -164,8 +164,8 @@ scale = Vector2(2, 2)
 text = "EXIT"
 
 [node name="Info" type="Button" parent="Menu/Main"]
-offset_left = 1536.0
-offset_top = 832.0
+offset_left = 1435.0
+offset_top = 731.0
 offset_right = 1586.0
 offset_bottom = 882.0
 text = "?"
