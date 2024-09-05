@@ -253,10 +253,10 @@ position = Vector2(10989, -3206)
 scale = Vector2(1, 0.6)
 
 [node name="Ladder17" parent="Ladders" index="2" instance=ExtResource("3_rtudt")]
-position = Vector2(34057, -197)
+position = Vector2(34087, -159)
 
 [node name="Ladder19" parent="Ladders" index="3" instance=ExtResource("3_rtudt")]
-position = Vector2(37905, -1607)
+position = Vector2(37918, -1569)
 scale = Vector2(1, 1.4)
 
 [node name="Ladder20" parent="Ladders" index="4" instance=ExtResource("3_rtudt")]
@@ -269,15 +269,15 @@ position = Vector2(50987, -3239)
 position = Vector2(56439, -2273)
 
 [node name="Ladder18" parent="Ladders" index="7" instance=ExtResource("3_rtudt")]
-position = Vector2(35352, -1162)
+position = Vector2(35352, -1149)
 scale = Vector2(1, 3)
 
 [node name="Ladder15" parent="Ladders" index="8" instance=ExtResource("3_rtudt")]
-position = Vector2(29895, -353)
-scale = Vector2(1, 1.4)
+position = Vector2(29916, -327)
+scale = Vector2(1, 1.3)
 
 [node name="Ladder16" parent="Ladders" index="9" instance=ExtResource("3_rtudt")]
-position = Vector2(32455, -711)
+position = Vector2(32459, -655)
 scale = Vector2(1, 2)
 
 [node name="Ladder2" parent="Ladders" index="10" instance=ExtResource("3_rtudt")]

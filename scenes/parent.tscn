@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c50kutchqp1ml"]
+[gd_scene load_steps=16 format=3 uid="uid://c50kutchqp1ml"]
 
 [ext_resource type="Script" path="res://scripts/parent.gd" id="1_xaghr"]
 [ext_resource type="Texture2D" uid="uid://dxe7eerp8thrj" path="res://assets/sprites/static_sprites/background.png" id="2_fjngb"]
@@ -19,6 +19,9 @@ font_color = Color(1, 0, 0, 1)
 font_size = 100
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_vatxy"]
+font_size = 40
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u126"]
 size = Vector2(99408, 2136)
 
@@ -37,6 +40,7 @@ region_rect = Rect2(100000, 100000, 100000, 100000)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="DeathUI" type="CanvasLayer" parent="UI"]
+visible = false
 follow_viewport_enabled = true
 
 [node name="DeathBG" type="ColorRect" parent="UI/DeathUI"]
@@ -72,6 +76,7 @@ offset_bottom = 521.0
 text = "Restart?"
 
 [node name="WinUI" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="WinBG" type="ColorRect" parent="UI/WinUI"]
 offset_right = 1600.0
@@ -107,6 +112,14 @@ script = ExtResource("5_78s6b")
 [node name="DebugInfo" type="Label" parent="UI/DebugUI"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="SpeedrunTimer" type="Label" parent="UI/DebugUI"]
+offset_left = 1386.0
+offset_top = 1.0
+offset_right = 1599.0
+offset_bottom = 56.0
+label_settings = SubResource("LabelSettings_vatxy")
+horizontal_alignment = 2
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_dgnex")
@@ -313,7 +326,11 @@ shape = SubResource("RectangleShape2D_63bx3")
 scale = Vector2(3.20955, 3.20955)
 texture = ExtResource("10_s0tuu")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="UI/DeathUI/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/WinUI/Return" to="." method="_on_return_pressed"]
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -28,6 +28,13 @@ offset_bottom = 534.0
 text = "Level 1
 (Easy)"
 
+[node name="Time1" type="Label" parent="CanvasLayer/Level1"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 160.0
+offset_right = 87.0
+offset_bottom = 183.0
+
 [node name="Level2" type="Button" parent="CanvasLayer"]
 offset_left = 752.0
 offset_top = 384.0
@@ -36,6 +43,12 @@ offset_bottom = 534.0
 text = "Level 2
 (Medium)"
 
+[node name="Time2" type="Label" parent="CanvasLayer/Level2"]
+offset_left = 35.0
+offset_top = 160.0
+offset_right = 87.0
+offset_bottom = 183.0
+
 [node name="Level3" type="Button" parent="CanvasLayer"]
 offset_left = 952.0
 offset_top = 384.0
@@ -43,6 +56,12 @@ offset_right = 1102.0
 offset_bottom = 534.0
 text = "Level 3
 (Hard)"
+
+[node name="Time3" type="Label" parent="CanvasLayer/Level3"]
+offset_left = 35.0
+offset_top = 160.0
+offset_right = 87.0
+offset_bottom = 183.0
 
 [node name="Back" type="Button" parent="CanvasLayer"]
 offset_left = 1168.0
