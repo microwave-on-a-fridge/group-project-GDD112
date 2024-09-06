@@ -9,3 +9,4 @@ var show_fps: bool = false
 var timer_total: int = 0
 var timer_seconds: int = 0
 var timer_minutes: int = 0
+var enemy_stunned: bool = false

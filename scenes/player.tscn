@@ -223,8 +223,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45pxn"]
 size = Vector2(287, 447)
 
-[node name="Player" type="CharacterBody2D"]
-collision_mask = 62
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 54
 script = ExtResource("1_6mkxa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -263,8 +263,13 @@ position_smoothing_enabled = true
 [node name="RunSE" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_dojne")
 
+[node name="BananaReloadTimer" type="Timer" parent="."]
+
+[node name="BananaSpawn" type="Marker2D" parent="."]
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="LadderBoostStartTimer" to="." method="_on_ladder_boost_start_timer_timeout"]
 [connection signal="timeout" from="LadderBoostEndTimer" to="." method="_on_ladder_boost_end_timer_timeout"]
+[connection signal="timeout" from="BananaReloadTimer" to="." method="_on_banana_reload_timer_timeout"]

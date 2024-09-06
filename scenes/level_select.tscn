@@ -44,6 +44,7 @@ text = "Level 2
 (Medium)"
 
 [node name="Time2" type="Label" parent="CanvasLayer/Level2"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 160.0
 offset_right = 87.0
@@ -58,6 +59,7 @@ text = "Level 3
 (Hard)"
 
 [node name="Time3" type="Label" parent="CanvasLayer/Level3"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 160.0
 offset_right = 87.0

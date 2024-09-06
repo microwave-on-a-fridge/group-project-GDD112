@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal banana(pos, direction)
+
 # ints for movement velocity stuff
 @export var speed = 1000
 @export var sprint_speed = 1500
@@ -12,6 +14,7 @@ var can_coyote_jump = false
 var jump_buffered = false
 var can_double_jump = false
 
+var can_banana = true
 var is_run_playing = false
 
 # movement code stuff
@@ -89,6 +92,14 @@ func _physics_process(_delta):
 	if velocity.x == 0 or not is_on_floor():
 		$RunSE.stop()
 		is_run_playing = false
+		
+	$BananaSpawn.look_at(get_local_mouse_position())
+	if Input.is_action_just_pressed("primary") and can_banana:
+		can_banana = false
+		$BananaReloadTimer.start()
+		var pos = $BananaSpawn.global_position
+		var direction = get_local_mouse_position()
+		banana.emit(pos, direction)
 
 #jump function
 func jump():
@@ -157,3 +168,7 @@ func _on_ladder_boost_start_timer_timeout():
 
 func _on_ladder_boost_end_timer_timeout():
 	speed = 1000
+
+
+func _on_banana_reload_timer_timeout():
+	can_banana = true
