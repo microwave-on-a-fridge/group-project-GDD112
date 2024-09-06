@@ -33,6 +33,7 @@ func _ready():
 	if err == OK:
 		previous_best = config.get_value("Total", str(level_num), 0)
 	else:
+		previous_best = 99999
 		print("couldnt load previous best")
 
 

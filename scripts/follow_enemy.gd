@@ -27,7 +27,7 @@ func _process(delta):
 
 # dont move until the player encounters the enemy
 func _on_detection_zone_body_entered(_body):
-	speed = 1000
+	speed = 1150
 	if not music_started:
 		$JudgementBGM.play()
 		$ScreamSE.play()
@@ -36,5 +36,5 @@ func _on_detection_zone_body_entered(_body):
 
 # if player gets too far, give enemy a speed boost to catch up
 func _on_detection_zone_body_exited(_body):
-	speed = 2000
+	speed = 3500
 

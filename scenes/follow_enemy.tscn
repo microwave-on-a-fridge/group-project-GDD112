@@ -69,6 +69,7 @@ motion_mode = 1
 script = ExtResource("1_qpnek")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_demim")
 autoplay = "default"
 frame = 2
@@ -77,12 +78,15 @@ frame_progress = 0.951989
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-18, -77)
 rotation = 0.76969
+scale = Vector2(1.6, 1.6)
 shape = SubResource("CapsuleShape2D_63ac7")
 
 [node name="DetectionZone" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+visible = false
 shape = SubResource("RectangleShape2D_cw8mx")
 
 [node name="JudgementBGM" type="AudioStreamPlayer" parent="."]

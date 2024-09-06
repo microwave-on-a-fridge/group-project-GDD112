@@ -1,11 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://5wwtcqkw2554"]
 
 [ext_resource type="Script" path="res://scripts/banana.gd" id="1_fpkub"]
-[ext_resource type="Texture2D" uid="uid://cx1epqcfo1v3r" path="res://assets/sprites/static_sprites/banana.png" id="2_snees"]
+[ext_resource type="Texture2D" uid="uid://d3ct76sb0qioq" path="res://assets/sprites/static_sprites/banana_peel.png" id="2_5nd1f"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0fbyr"]
-radius = 53.2274
-height = 174.395
+[sub_resource type="CircleShape2D" id="CircleShape2D_7howm"]
+radius = 76.0
 
 [node name="Banana" type="RigidBody2D"]
 collision_layer = 8
@@ -13,9 +12,8 @@ collision_mask = 6
 script = ExtResource("1_fpkub")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_snees")
+texture = ExtResource("2_5nd1f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(18, 11)
-rotation = 0.940732
-shape = SubResource("CapsuleShape2D_0fbyr")
+position = Vector2(0, 20)
+shape = SubResource("CircleShape2D_7howm")
